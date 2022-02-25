@@ -125,5 +125,9 @@ AllGraph +AGraph +BGraph +CGraph
 ##################Primary Statistical Testing 
 
 
+lapply(list(data$UEMDiff6m ,data$LEMDiff6m ,data$TOTMDiff6m),  ## Defining list of outcomes
+       function(outcomeList) {
+ttest<- t.test(outcomeList~Treatment, mu = 0, alternative = "greater")  ## Two sample one-way T test
 
+})
 
