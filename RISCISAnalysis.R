@@ -145,13 +145,37 @@ data$ASIA_1[data$ASIA_1 == 9]<- NA
 ##Defining the difference variable
 ASIADiff6m <- data$ASIA_6 - data$ASIA_1
 
+##Creating Binary Data
+ASIADiff6m_greater0 <-ifelse(ASIADiff6m<1,"Negative","Positive")
+
 ##TwoBy2 Table 
 ASIADIFF_2b2<-twoby2(Treatment, ASIADiff6m_greater0)
 
 ##MOSAIC PLOT
-ASIADiff6m_greater0 <-ifelse(ASIADiff6m<1,"Negative","Positive")
 tableASIA <- table( Treatment, ASIADiff6m_greater0 )
 ASIADIFF_mplot<- mosaicplot(tableASIA, color = c("red", "green"), main = "ASIA Change >0",
                    xlab = "Treatment", ylab = "Outcome  ")
+
+
+#############################################
+###############CODE BLOCK 4##################
+#############################################
+######Changes in Neurological Level of Injury
+
+ttest_NLI<- t.test(data$NLIDiff6m~Treatment, mu = 0, alternative = "greater")  ## Two sample one-way T test
+ttest_NLI
+
+##Creating Binary Data
+NLIADiff6m_greater0 <-ifelse(ASIADiff6m<1,"Negative","Positive")
+
+##TwoBy2 Table 
+NLIDIFF_2b2<-twoby2(Treatment, NLIADiff6m_greater0)
+
+##MOSAIC PLOT
+
+tableNLI <- table( Treatment, NLIADiff6m_greater0 )
+NLIDIFF_mplot<- mosaicplot(tableNLI, color = c("red", "green"), main = "NLI Change >0",
+                            xlab = "Treatment", ylab = "Outcome  ")
+
 
 
