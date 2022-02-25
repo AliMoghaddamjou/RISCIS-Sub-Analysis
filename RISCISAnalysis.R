@@ -59,9 +59,10 @@ ASIAA <- dataASIA[["A"]]
 ASIAB <-dataASIA[["B"]]
 ASIAC <-dataASIA[["C"]]
 
-
+#############################################
 ###############CODE BLOCK 1##################
-#######Creating Graphs of Endpoints##########
+#############################################
+#################Creating Graphs of Endpoints
 
 ##Graphs #######################################
 ##First Create Subset Data in long form 
@@ -116,6 +117,13 @@ CGraph <- ggboxplot(
 
 
 AllGraph +AGraph +BGraph +CGraph
+
+
+#############################################
+###############CODE BLOCK 2##################
+#############################################
+##################Primary Statistical Testing 
+
 
 
 
