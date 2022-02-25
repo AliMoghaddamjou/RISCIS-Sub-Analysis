@@ -301,7 +301,7 @@ NeurologicalLevel <- data$NLI_N_1
 BaselineASIA <- data$baseASIA 
 CharlsonComorbidityIndex <-data$CCI
 Gender <- data$SEX
-
+Treatment <- data$trtgrp  ##unblinded treatment group 
 
 ##Defining Outcomes
 OutcomeUEMALL <- data$UEMDiff6m
