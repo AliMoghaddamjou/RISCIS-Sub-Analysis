@@ -449,4 +449,124 @@ summ(lfitAllLEMC)
 plot4
 export_summs(lfitAllUEMC,lfitAllLEMC, lfitAllTOTMC,error_format = "[{conf.low}, {conf.high}]",  model.names = c("Upper Extremity Motor Diff. (6m)", "Lower Extremity Motor Diff. (6m)", "Total  Motor Diff. (6m)"))
 
+#############################################
+###############CODE BLOCK 10##################
+#############################################
+################################MCID/Binary 
+
+
+##UEM
+par(mfrow=c(2,2))
+#All
+Outcome <- data$UEMDiff6m 
+Treatment <- data$trtgrp 
+CutOff<- 2
+UEM_MCID <-ifelse(Outcome<CutOff,"Negative","Positive")
+table1 <- table( Treatment, UEM_MCID )
+UEMALL<- mosaicplot(table1, color = c("red", "green"), main = "ALL Patients",
+                    xlab = "Treatment", ylab = "Outcome  ")
+
+##A
+Outcome <- ASIAA$UEMDiff6m 
+Treatment <- ASIAA$trtgrp 
+CutOff<- 2
+UEM_MCID <-ifelse(Outcome<CutOff,"Negative","Positive")
+table1 <- table( Treatment, UEM_MCID )
+UEMA<- mosaicplot(table1, color = c("red", "green"), main = "ASIA A",
+                  xlab = "Treatment", ylab = "Outcome  ")
+
+##B
+Outcome <- ASIAB$UEMDiff6m 
+Treatment <- ASIAB$trtgrp 
+CutOff<- 2
+UEM_MCID <-ifelse(Outcome<CutOff,"Negative","Positive")
+table1 <- table( Treatment, UEM_MCID )
+UEMB<- mosaicplot(table1, color = c("red", "green"), main = "ASIA B",
+                  xlab = "Treatment", ylab = "Outcome  ")
+##C
+Outcome <- ASIAC$UEMDiff6m 
+Treatment <- ASIAC$trtgrp 
+CutOff<- 2
+UEM_MCID <-ifelse(Outcome<CutOff,"Negative","Positive")
+table1 <- table( Treatment, UEM_MCID )
+UEMC<- mosaicplot(table1, color = c("red", "green"), main = "ASIA C",
+                  xlab = "Treatment", ylab = "Outcome  ")
+
+
+##LEM
+par(mfrow=c(2,2))
+#All
+Outcome <- data$LEMDiff6m 
+Treatment <- data$trtgrp 
+CutOff<- 2
+LEM_MCID <-ifelse(Outcome<CutOff,"Negative","Positive")
+table1 <- table( Treatment, LEM_MCID )
+LEMALL<- mosaicplot(table1, color = c("red", "green"), main = "ALL Patients",
+                    xlab = "Treatment", ylab = "Outcome  ")
+
+##A
+Outcome <- ASIAA$LEMDiff6m 
+Treatment <- ASIAA$trtgrp 
+CutOff<- 2
+LEM_MCID <-ifelse(Outcome<CutOff,"Negative","Positive")
+table1 <- table( Treatment, LEM_MCID )
+LEMA<- mosaicplot(table1, color = c("red", "green"), main = "ASIA A",
+                  xlab = "Treatment", ylab = "Outcome  ")
+
+##B
+Outcome <- ASIAB$LEMDiff6m 
+Treatment <- ASIAB$trtgrp 
+CutOff<- 2
+LEM_MCID <-ifelse(Outcome<CutOff,"Negative","Positive")
+table1 <- table( Treatment, LEM_MCID )
+LEMB<- mosaicplot(table1, color = c("red", "green"), main = "ASIA B",
+                  xlab = "Treatment", ylab = "Outcome  ")
+##C
+Outcome <- ASIAC$LEMDiff6m 
+Treatment <- ASIAC$trtgrp 
+CutOff<- 2
+LEM_MCID <-ifelse(Outcome<CutOff,"Negative","Positive")
+table1 <- table( Treatment, LEM_MCID )
+LEMC<- mosaicplot(table1, color = c("red", "green"), main = "ASIA C",
+                  xlab = "Treatment", ylab = "Outcome  ")
+
+
+
+##TOTM
+par(mfrow=c(2,2))
+#All
+Outcome <- data$TOTMDiff6m 
+Treatment <- data$trtgrp 
+CutOff<- 5
+TOTM_MCID <-ifelse(Outcome<CutOff,"Negative","Positive")
+table1 <- table( Treatment, TOTM_MCID )
+TOTMALL<- mosaicplot(table1, color = c("red", "green"), main = "ALL Patients",
+                     xlab = "Treatment", ylab = "Outcome  ")
+
+##A
+Outcome <- ASIAA$TOTMDiff6m 
+Treatment <- ASIAA$trtgrp 
+CutOff<- 5
+TOTM_MCID <-ifelse(Outcome<CutOff,"Negative","Positive")
+table1 <- table( Treatment, TOTM_MCID )
+TOTMA<- mosaicplot(table1, color = c("red", "green"), main = "ASIA A",
+                   xlab = "Treatment", ylab = "Outcome  ")
+
+##B
+Outcome <- ASIAB$TOTMDiff6m 
+Treatment <- ASIAB$trtgrp 
+CutOff<- 5
+TOTM_MCID <-ifelse(Outcome<CutOff,"Negative","Positive")
+table1 <- table( Treatment, TOTM_MCID )
+TOTMB<- mosaicplot(table1, color = c("red", "green"), main = "ASIA B",
+                   xlab = "Treatment", ylab = "Outcome  ")
+##C
+Outcome <- ASIAC$TOTMDiff6m 
+Treatment <- ASIAC$trtgrp 
+CutOff<- 5
+TOTM_MCID <-ifelse(Outcome<CutOff,"Negative","Positive")
+table1 <- table( Treatment, TOTM_MCID )
+TOTMC<- mosaicplot(table1, color = c("red", "green"), main = "ASIA C",
+                   xlab = "Treatment", ylab = "Outcome  ")
+
 
