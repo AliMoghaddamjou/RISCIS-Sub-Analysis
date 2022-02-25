@@ -15,7 +15,7 @@ cat("\f")
 rm(list = ls())
 
 ##Function to check if required packages are installed 
-requiredPackages <- c("gplots", "jtools", "ggstance", "patchwork", "lme4", "splines", "splines", "broom.mixed", "MASS", "export_summs", "evd")
+requiredPackages <- c("gplot2", "jtools", "ggstance", "patchwork", "lme4", "splines", "splines", "broom.mixed", "MASS",  "evd", "dplyr", "tidyverse",  "ggpubr")
 packagesLoading <- function(pkg){
   new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
   if (length(new.pkg))
@@ -31,7 +31,7 @@ invisible(lapply(requiredPackages, library, character.only = TRUE))
 
 
 ##SET WD THE FOLDER WITH THE DATAIN
-#setwd("C:/Users/Ali/OneDrive/Projects/RISCIS/IntermAnalysisFeb28/gitRepository/data")
+setwd("C:/Users/Ali/OneDrive/Projects/RISCIS/IntermAnalysisFeb28/gitRepository/data")
 
 ##Loading the data from the CSV file
 ##Please refer to stata do file in repository for the coes to obtain the file loaded here
