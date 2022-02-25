@@ -192,7 +192,26 @@ NLIDIFF_mplot<- mosaicplot(tableNLI, color = c("red", "green"), main = "NLI Chan
 #############################################
 ###############CODE BLOCK 5##################
 #############################################
-######LOADING SECONDARY OUTCOME DATA 
+######################################SF36
+par(mfrow=c(2,2))
+lapply(list(data_SO,ASIAA_SO,ASIAB_SO, ASIAC_SO ),
+       function(w) {
+         
+         par(mfrow=c(2,2))
+         sf36_data <- w[c("treatment",  "SF36Physical6m",  "SF36Mental6m")]
+         mydata <- sf36_data
+         mydata.long <- mydata %>%
+           pivot_longer(-treatment, names_to = "variables", values_to = "value")  
+         
+         # Create the plot
+         myplot <- ggboxplot(
+           mydata.long, x = "treatment", y = "value",
+           fill = "treatment", palette = "npg", legend = "none",
+           ggtheme = theme_pubr(border = TRUE)
+         )+
+           facet_wrap(~variables)
+         
+         myplot})
 
 
 
