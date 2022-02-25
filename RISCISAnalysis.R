@@ -131,3 +131,27 @@ ttest<- t.test(outcomeList~Treatment, mu = 0, alternative = "greater")  ## Two s
 
 })
 
+
+#############################################
+###############CODE BLOCK 3##################
+#############################################
+##############################ASIA DIFFERENCE
+
+##Replacing 9 with missing 
+
+data$ASIA_6[data$ASIA_6 == 9]<- NA
+data$ASIA_1[data$ASIA_1 == 9]<- NA
+
+##Defining the difference variable
+ASIADiff6m <- data$ASIA_6 - data$ASIA_1
+
+##TwoBy2 Table 
+ASIADIFF_2b2<-twoby2(Treatment, ASIADiff6m_greater0)
+
+##MOSAIC PLOT
+ASIADiff6m_greater0 <-ifelse(ASIADiff6m<1,"Negative","Positive")
+tableASIA <- table( Treatment, ASIADiff6m_greater0 )
+ASIADIFF_mplot<- mosaicplot(tableASIA, color = c("red", "green"), main = "ASIA Change >0",
+                   xlab = "Treatment", ylab = "Outcome  ")
+
+
