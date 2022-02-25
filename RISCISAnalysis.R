@@ -23,3 +23,11 @@ Treatment <- data$trtgrp  ##unblinded treatment group
 
 ##Outcome. UEM is used in this case. This can be changed to LEMDiff6m or TOTMDiff6m for the other outcomes 
 Outcome <- data$UEMDiff6m 
+
+
+##Subset Data Based on ASIA
+
+dataASIA <- split(data, f = data$baseASIA)
+ASIAA <- dataASIA[["A"]]
+ASIAB <-dataASIA[["B"]]
+ASIAC <-dataASIA[["C"]]
