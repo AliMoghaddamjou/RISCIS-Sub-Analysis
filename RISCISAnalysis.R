@@ -251,5 +251,39 @@ p4<- FL[[4]]+ ggtitle ("ASIA C")
 par(mfrow=c(2,2))
 p1+p2+p3+p4
 
+#############################################
+###############CODE BLOCK 6##################
+#############################################
+######################################VAS
 
 
+FL_VAS<- lapply(list(data_SO,ASIAA_SO,ASIAB_SO, ASIAC_SO ),
+            function(w) {
+              box_plot <- ggplot(data = w, aes(x = treatment, y = w$EQ5DVAS6m  
+              ))
+              box_plot +
+                ggtitle("Boxplot")+
+                geom_boxplot() +
+                
+                geom_point(shape = 5,
+                           color = "steelblue") +
+                stat_summary(fun = mean, geom = "point", col = "red") +  # Add points to plot
+                stat_summary(fun = mean, geom = "text", col = "red",     # Add text to plot
+                             vjust = 1.5, aes(label = paste("Mean:", round(..y.., digits = 1))))+
+                stat_summary(fun = median, geom = "point", col = "blue") +  # Add points to plot
+                stat_summary(fun = median, geom = "text", col = "blue",     # Add text to plot
+                             vjust = -2.0, aes(label = paste("Median:", round(..y.., digits = 1))))+
+                
+                theme_classic()    +
+                theme(plot.title = element_text(hjust = 0.5), axis.title.x=element_blank(), axis.title.y=element_blank(),axis.text.y=element_blank() 
+                )
+            })
+
+p1<- FL_VAS[[1]]+ ggtitle ("All Patients")
+p2<- FL_VAS[[2]]+ ggtitle ("ASIA A")
+p3<- FL_VAS[[3]]+ ggtitle ("ASIA B")
+p4<- FL_VAS[[4]]+ ggtitle ("ASIA C")
+
+
+par(mfrow=c(2,2))
+p1+p2+p3+p4
