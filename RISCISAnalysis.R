@@ -342,3 +342,111 @@ mixedPlotAll +apatheme
 
 SumMIXED<- export_summs(MixedUEM,MixedLEM, MixedTOTM,error_format = "[{conf.low}, {conf.high}]",  model.names = c("Upper Extremity Motor Diff. (6m)", "Lower Extremity Motor Diff. (6m)", "Total  Motor Diff. (6m)"))
 SumMIXED
+
+
+
+#############################################
+###############CODE BLOCK 9##################
+#############################################
+################################Linear Models 
+
+#######ALL PATIENTS 
+
+lfitAllUEM <- glm(OutcomeUEMALL ~ Age+Race+Gender+CharlsonComorbidityIndex+NeurologicalLevel+ Treatment, data = data )
+lfitAllLEM <- glm(OutcomeLEMALL ~ Age+Race+Gender+CharlsonComorbidityIndex+NeurologicalLevel+ Treatment, data = data )
+lfitAllTOTM <- glm(OutcomeTOTMALL ~ Age+Race+Gender+CharlsonComorbidityIndex+NeurologicalLevel+ Treatment, data = data )
+
+plotlfALL<- plot_summs(lfitAllUEM, lfitAllLEM,lfitAllTOTM, scale = TRUE, inner_ci_level = .9,
+                       model.names = c("Upper Extremity Motor Diff. (6m)", "Lower Extremity Motor Diff. (6m)", "Total  Motor Diff. (6m)"),
+                       legend.title = "Outcome Measure")
+
+
+export_summs(lfitAllUEM,lfitAllLEM, lfitAllTOTM,error_format = "[{conf.low}, {conf.high}]",  model.names = c("Upper Extremity Motor Diff. (6m)", "Lower Extremity Motor Diff. (6m)", "Total  Motor Diff. (6m)"))
+
+plot1<- plotlfALL + apatheme
+plot1
+
+## ASIA A
+Age<- ASIAA$AGE
+Race <- ASIAA$RACE 
+NeurologicalLevel <- ASIAA$NLI_N_1 
+BaselineASIA <- ASIAA$baseASIA 
+CharlsonComorbidityIndex <-ASIAA$CCI
+Gender <- ASIAA$SEX
+Riluzole <-ASIAA$trtgrp  
+Treatment <- ASIAA$trtgrp 
+OutcomeUEMA <- ASIAA$UEMDiff6m
+OutcomeLEMA <- ASIAA$LEMDiff6m
+OutcomeTOTMA <- ASIAA$TOTMDiff6m
+
+lfitAllUEM <- glm(OutcomeUEMA ~ Treatment+Age+Race+Gender+CharlsonComorbidityIndex+NeurologicalLevel, data = ASIAA )
+lfitAllLEM <- glm(OutcomeLEMA ~ Treatment+Age+Race+Gender+CharlsonComorbidityIndex+NeurologicalLevel, data = ASIAA )
+lfitAllTOTM <- glm(OutcomeTOTMA ~ Treatment+Age+Race+Gender+CharlsonComorbidityIndex+NeurologicalLevel, data = ASIAA )
+
+plotlfASIAA<- plot_summs(lfitAllUEM, lfitAllLEM,lfitAllTOTM, scale = TRUE, inner_ci_level = .9,
+                         model.names = c("Upper Extremity Motor Diff. (6m)", "Lower Extremity Motor Diff. (6m)", "Total  Motor Diff. (6m)"),
+                         legend.title = "Outcome Measure")
+
+
+plot2<- plotlfASIAA + apatheme
+plot2
+
+export_summs(lfitAllUEM,lfitAllLEM, lfitAllTOTM,error_format = "[{conf.low}, {conf.high}]",  model.names = c("Upper Extremity Motor Diff. (6m)", "Lower Extremity Motor Diff. (6m)", "Total  Motor Diff. (6m)"))
+
+
+## ASIA B
+OutcomeUEMB <- ASIAB$UEMDiff6m
+OutcomeLEMB <- ASIAB$LEMDiff6m
+OutcomeTOTMB <- ASIAB$TOTMDiff6m
+Treatment <- ASIAB$trtgrp 
+Age<- ASIAB$AGE
+Race <- ASIAB$RACE 
+NeurologicalLevel <- ASIAB$NLI_N_1 
+BaselineASIA <- ASIAB$baseASIA 
+CharlsonComorbidityIndex <-ASIAB$CCI
+Gender <- ASIAB$SEX
+Riluzole <-ASIAB$trtgrp  
+
+lfitAllUEMB <- glm(OutcomeUEMB ~ Treatment+Age+Race+Gender+CharlsonComorbidityIndex+NeurologicalLevel, data = ASIAB )
+lfitAllLEMB <- glm(OutcomeLEMB ~ Treatment+Age+Race+Gender+CharlsonComorbidityIndex+NeurologicalLevel, data = ASIAB )
+lfitAllTOTMB <- glm(OutcomeTOTMB ~ Treatment+Age+Race+Gender+CharlsonComorbidityIndex+NeurologicalLevel, data = ASIAB )
+
+plotlfASIAB<- plot_summs(lfitAllUEMB, lfitAllLEMB,lfitAllTOTMB, scale = TRUE,  inner_ci_level = .9,
+                         model.names = c("Upper Extremity Motor Diff. (6m)", "Lower Extremity Motor Diff. (6m)", "Total  Motor Diff. (6m)"),
+                         legend.title = "Outcome Measure")
+
+
+plot3<- plotlfASIAB +  apatheme
+plot3
+export_summs(lfitAllUEM,lfitAllLEM, lfitAllTOTM,error_format = "[{conf.low}, {conf.high}]",  model.names = c("Upper Extremity Motor Diff. (6m)", "Lower Extremity Motor Diff. (6m)", "Total  Motor Diff. (6m)"))
+
+
+## ASIA C
+OutcomeUEMC <- ASIAC$UEMDiff6m
+OutcomeLEMC <- ASIAC$LEMDiff6m
+OutcomeTOTMC <- ASIAC$TOTMDiff6m
+Treatment <- ASIAC$trtgrp 
+Age<- ASIAC$AGE
+Race <- ASIAC$RACE 
+NeurologicalLevel <- ASIAC$NLI_N_1 
+BaselineASIA <- ASIAC$baseASIA 
+CharlsonComorbidityIndex <-ASIAC$CCI
+Gender <- ASIAC$SEX
+Riluzole <-ASIAC$trtgrp  
+
+lfitAllUEMC <- glm(OutcomeUEMC ~ Treatment+Age+Race+Gender+CharlsonComorbidityIndex+NeurologicalLevel, data = ASIAC )
+lfitAllLEMC <- glm(OutcomeLEMC ~ Treatment+Age+Race+Gender+CharlsonComorbidityIndex+NeurologicalLevel, data = ASIAC )
+lfitAllTOTMC <- glm(OutcomeTOTMC ~ Treatment+Age+Race+Gender+CharlsonComorbidityIndex+NeurologicalLevel, data = ASIAC )
+
+plotlfASIAC<- plot_summs(lfitAllUEMC, lfitAllLEMC,lfitAllTOTMC, scale = TRUE, inner_ci_level = .9, 
+                         model.names = c("Upper Extremity Motor Diff. (6m)", "Lower Extremity Motor Diff. (6m)", "Total  Motor Diff. (6m)"),
+                         legend.title = "Outcome Measure", legend.position="none")
+
+plot4<- plotlfASIAC + apatheme
+
+summ(lfitAllLEMC)
+
+plot4
+export_summs(lfitAllUEMC,lfitAllLEMC, lfitAllTOTMC,error_format = "[{conf.low}, {conf.high}]",  model.names = c("Upper Extremity Motor Diff. (6m)", "Lower Extremity Motor Diff. (6m)", "Total  Motor Diff. (6m)"))
+
+
