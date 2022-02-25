@@ -59,6 +59,18 @@ ASIAA <- dataASIA[["A"]]
 ASIAB <-dataASIA[["B"]]
 ASIAC <-dataASIA[["C"]]
 
+
+##########SECONDARY OUTCOME DATA
+
+baseData_SO <-  read.csv('alldataSO.csv')  ## LOADING FILES
+#SPLITING Based on ASIA 
+dataASIA_SO <- split(baseData_SO, f = baseData_SO$baseASIA)
+ASIAA_SO <- dataASIA_SO[["A"]]
+ASIAB_SO <-dataASIA_SO[["B"]]
+ASIAC_SO <-dataASIA_SO[["C"]]
+data_SO <- baseData_SO
+
+
 #############################################
 ###############CODE BLOCK 1##################
 #############################################
@@ -176,6 +188,11 @@ NLIDIFF_2b2<-twoby2(Treatment, NLIADiff6m_greater0)
 tableNLI <- table( Treatment, NLIADiff6m_greater0 )
 NLIDIFF_mplot<- mosaicplot(tableNLI, color = c("red", "green"), main = "NLI Change >0",
                             xlab = "Treatment", ylab = "Outcome  ")
+
+#############################################
+###############CODE BLOCK 5##################
+#############################################
+######LOADING SECONDARY OUTCOME DATA 
 
 
 
