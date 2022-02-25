@@ -287,3 +287,58 @@ p4<- FL_VAS[[4]]+ ggtitle ("ASIA C")
 
 par(mfrow=c(2,2))
 p1+p2+p3+p4
+
+#############################################
+###############CODE BLOCK 8##################
+#############################################
+#####################Linear MIXED EFFECT MODEL
+
+
+##Defining the Co-variates
+Age<- data$AGE
+Race <- data$RACE 
+NeurologicalLevel <- data$NLI_N_1 
+BaselineASIA <- data$baseASIA 
+CharlsonComorbidityIndex <-data$CCI
+Gender <- data$SEX
+
+
+##Defining Outcomes
+OutcomeUEMALL <- data$UEMDiff6m
+OutcomeLEMALL <- data$LEMDiff6m
+OutcomeTOTMALL <- data$TOTMDiff6m
+
+
+
+## Fitting Models 
+MixedUEM<- lmer(OutcomeUEMALL ~ Treatment+Age+Race+Gender+CharlsonComorbidityIndex + (1|BaselineASIA) +(1|NeurologicalLevel), data = data)
+MixedLEM<- lmer(OutcomeLEMALL ~ Treatment+Age+Race+Gender+CharlsonComorbidityIndex + (1|BaselineASIA) +(1|NeurologicalLevel), data = data)
+MixedTOTM<- lmer(OutcomeTOTMALL ~ Treatment+Age+Race+Gender+CharlsonComorbidityIndex + (1|BaselineASIA) +(1|NeurologicalLevel), data = data)
+
+##PLOTTING THE MODELS
+
+
+mixedPlotAll<- plot_summs(MixedUEM,MixedLEM,MixedTOTM, scale = TRUE, inner_ci_level = .9, 
+                          model.names = c("Upper Extremity Motor Diff. (6m)", "Lower Extremity Motor Diff. (6m)", "Total  Motor Diff. (6m)"),
+                          legend.title = "Outcome Measure")
+
+
+##CREATING THEME FOR THE GRAPHS
+apatheme=theme_bw()+
+  theme(panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        panel.border=element_blank(),
+        axis.line=element_line(),
+        text=element_text(family='Helvetica'),
+        legend.title=element_blank(), 
+        axis.text=element_text(size=25),
+        axis.title=element_text(size=15),
+        legend.text = element_text(size = 20),
+        legend.position = "none")
+
+mixedPlotAll +apatheme
+
+##Summary table 
+
+SumMIXED<- export_summs(MixedUEM,MixedLEM, MixedTOTM,error_format = "[{conf.low}, {conf.high}]",  model.names = c("Upper Extremity Motor Diff. (6m)", "Lower Extremity Motor Diff. (6m)", "Total  Motor Diff. (6m)"))
+SumMIXED
